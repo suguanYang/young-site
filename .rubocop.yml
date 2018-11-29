@@ -1,0 +1,23 @@
+Rails:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 25
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/ClassLength:
+  Max: 150
+
+Rails/TimeZone:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
