@@ -1,0 +1,14 @@
+[
+  {
+    "name": "memorize",
+    "path": "/fe/src/index.tsx"
+  },
+  {
+    "name": "main",
+    "path": "/fe/src/index.tsx"
+  },
+  {
+    "name": "dashborad",
+    "path": "/fe/src/index.tsx"
+  }
+]
