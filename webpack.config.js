@@ -9,7 +9,7 @@ const DEV = process.env.NODE_ENV !== "production";
 
 function config() {
 	return {
-	  entry: path.resolve(__dirname, "./fe/src/index.tsx"),
+	  entry: path.resolve(__dirname, "./fe/pages/index/index.tsx"),
 	  output: {
 	    path: path.resolve(__dirname, "./public/webpack/"),
 	    filename: "[name].[contenthash].js",

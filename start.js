@@ -27,7 +27,7 @@ const questions = [
 function commandCreator(appTypes, env) {
   const compiler = "node ./fe_builder/index.js "
   const compilerConfig = "./fe_builder/webpack.config.js ";
-  const apps = `--appType=${appTypes} `;
+  const apps = `--appTypes=${appTypes} `;
   const mode = `NODE_ENV=${env} `;
 
   return  mode + compiler + compilerConfig + apps;
@@ -38,7 +38,7 @@ inquirer
   .then(answers => {
     const appTypes = answers.types.reduce((curr, prev) => `${curr},${prev}`);
     const cmd = commandCreator(appTypes, answers.development ? "development" : "production");
-    console.log('cmd: ', cmd);
+    console.info('cmd: ', cmd);
     spawn(cmd, {
       shell: true,
       stdio: "inherit",
