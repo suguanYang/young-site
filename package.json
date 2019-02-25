@@ -6,9 +6,9 @@
   },
   "scripts": {
     "start": "node start.js",
-    "build-server": "webpack-dev-server -d --mode development --config ./webpack.config.js --watch",
-    "build-dev": "webpack -d --mode development --config ./webpack.config.js",
-    "build-prod": "webpack -p --mode production --config ./webpack.config.js"
+    "build-dev": "webpack-dev-server -d --mode development --config ./fe_builder/webpack.config.js --watch",
+    "build-pro": "webpack -p --mode production --config ./fe_builder/webpack.config.js",
+    "build-pro-main": "webpack -p --mode production --config ./fe_builder/webpack.config.js --appTypes=main"
   },
   "dependencies": {
     "@types/react-dom": "^16.8.2",

@@ -3,6 +3,8 @@ const { spawn, } = require("child_process");
 
 const APP_TYPES = require("./fe_builder/configs/appTypesConfig");
 
+const APP_TYPES_ARRAY = Object.values(APP_TYPES).map(app => app);
+
 const questions = [
   {
     type: "confirm",
@@ -14,7 +16,7 @@ const questions = [
     type: "checkbox",
     name: "types",
     message: "select apps",
-    choices: APP_TYPES,
+    choices: APP_TYPES_ARRAY,
     validate(answer) {
       if (answer.length < 1) {
         return "You must choose at least one project";
@@ -25,12 +27,13 @@ const questions = [
 ];
 
 function commandCreator(appTypes, env) {
-  const compiler = "node ./fe_builder/index.js "
-  const compilerConfig = "./fe_builder/webpack.config.js ";
   const apps = `--appTypes=${appTypes} `;
   const mode = `NODE_ENV=${env} `;
+  const compiling = env === "development"
+    ? "yarn build-dev "
+    : "yarn build-pro ";
 
-  return  mode + compiler + compilerConfig + apps;
+  return  mode + compiling + apps;
 }
 
 inquirer
@@ -38,9 +41,9 @@ inquirer
   .then(answers => {
     const appTypes = answers.types.reduce((curr, prev) => `${curr},${prev}`);
     const cmd = commandCreator(appTypes, answers.development ? "development" : "production");
-    console.info('cmd: ', cmd);
+    console.info("cmd: ", cmd);
     spawn(cmd, {
       shell: true,
       stdio: "inherit",
-    })
+    });
   });

@@ -1,14 +1,6 @@
-[
-  {
-    "name": "memorize",
-    "path": "/fe/src/index.tsx"
-  },
-  {
+{
+  "main": {
     "name": "main",
-    "path": "/fe/src/index.tsx"
-  },
-  {
-    "name": "dashborad",
-    "path": "/fe/src/index.tsx"
+    "path": "../fe/main/index.tsx"
   }
-]
+}
