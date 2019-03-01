@@ -24,3 +24,6 @@ Rails/TimeZone:
 
 Rails/FilePath:
   Enabled: false
+
+Layout/Tab:
+  Enabled: false

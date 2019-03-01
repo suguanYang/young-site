@@ -8,6 +8,7 @@
     "start": "node start.js",
     "build-dev": "webpack-dev-server -d --mode development --config ./fe_builder/webpack.config.js --watch",
     "build-pro": "webpack -p --mode production --config ./fe_builder/webpack.config.js",
+    "lint": "eslint .",
     "build-pro-main": "webpack -p --mode production --config ./fe_builder/webpack.config.js --appTypes=main"
   },
   "dependencies": {

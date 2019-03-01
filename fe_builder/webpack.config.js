@@ -87,7 +87,7 @@ function config() {
     },
     plugins: [
       new ManifestPlugin({
-        fileName: path.resolve(__dirname, "../public/manifest-fe-manifest.json"),
+        fileName: path.resolve(__dirname, `../public/manifest-${appTypes}.json`),
         writeToFileEmit: true,
       }),
     ],

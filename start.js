@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const { spawn, } = require("child_process");
+const { spawn } = require("child_process");
 
 const APP_TYPES = require("./fe_builder/configs/appTypesConfig");
 
@@ -29,7 +29,7 @@ const questions = [
 function commandCreator(appTypes, env) {
   const apps = `--appTypes=${appTypes} `;
   const mode = `NODE_ENV=${env} `;
-  const compiling = env === "development"
+  const compiling = env === 'development'
     ? "yarn build-dev "
     : "yarn build-pro ";
 
@@ -41,9 +41,9 @@ inquirer
   .then(answers => {
     const appTypes = answers.types.reduce((curr, prev) => `${curr},${prev}`);
     const cmd = commandCreator(appTypes, answers.development ? "development" : "production");
-    console.info("cmd: ", cmd);
     spawn(cmd, {
       shell: true,
       stdio: "inherit",
     });
   });
+
