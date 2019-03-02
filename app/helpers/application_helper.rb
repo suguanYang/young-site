@@ -1,21 +1,35 @@
-require "pry"
+require 'pry'
 
 module ApplicationHelper
-  def include_webpack_file(app)
-    javascript_include_tag read_path_from_manifest app
+  def include_webpack_tag(app, options = {})
+    sources = read_javascript_source_from_manifest app
+    tags = sources.map do |source|
+      javascript_include_tag(source, options)
+    end
+    tags.join('<BR>')
   end
 
-  def webpack_manifest_file_path
-    Rails.root.join('public/', 'manifest-fe-manifest.json')
+  def webpack_manifest_file_path(app_name)
+    Rails.root.join('public/', "manifest-#{app_name}.json")
   end
 
-  def read_path_from_manifest(app_name)
-    manifest_file = File.read webpack_manifest_file_path
-    manifest = JSON.parse(manifest_file)
-    YoungSite.config.fe_script_assets[app_name].host + YoungSite.config.fe_script_assets.path + manifest[app_name]
+  def read_javascript_source_from_manifest(app_name)
+    manifest_includes_files = get_all_files_from_manifest(get_manifest_file!(app_name))
+
+    fe_script_assets_config = YoungSite.config.fe_script_assets[app_name]
+    manifest_includes_files.map do |file|
+      fe_script_assets_config['host'] + fe_script_assets_config['path'] + file
+    end
   end
 
-  def length_utf_8 text
-    text.to_s.unpack("U*").inject(0){|n, c| n += (c < 127 ? 0.5 : 1);  n}.ceil
+  def get_manifest_file!(app_name)
+    manifest_file = File.read webpack_manifest_file_path(app_name)
+    JSON.parse manifest_file
+  end
+
+  def get_all_files_from_manifest(manifest)
+    manifest.keys.map do |file|
+      manifest[file]
+    end
   end
 end

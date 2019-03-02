@@ -29,7 +29,7 @@ const questions = [
 function commandCreator(appTypes, env) {
   const apps = `--appTypes=${appTypes} `;
   const mode = `NODE_ENV=${env} `;
-  const compiling = env === 'development'
+  const compiling = env === "development"
     ? "yarn build-dev "
     : "yarn build-pro ";
 

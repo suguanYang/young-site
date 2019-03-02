@@ -16,6 +16,10 @@
     "plugins": [
         "react"
     ],
+    "excludeFiles": [
+      "./app/assets",
+      "node_modules/"
+    ],
     "rules": {
         "indent": [
             "error",
