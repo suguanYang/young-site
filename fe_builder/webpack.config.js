@@ -3,8 +3,6 @@ const ManifestPlugin = require("webpack-manifest-plugin");
 const devServer = require("./configs/devServerConfig");
 const entryConfig = require("./configs/appTypesConfig");
 
-// const DEV = process.env.NODE_ENV !== "production";
-
 function getAppTypes()  {
   const appTypesOption = process.argv.filter(arg => arg.includes("--appTypes=")) || ["--appTypes=main"];
   return appTypesOption[0].split("=")[1].split(",");  // get [...<apptypes>]
@@ -92,7 +90,6 @@ function config() {
       }),
     ],
     optimization: {
-      runtimeChunk: "single",
       splitChunks: {
         minChunks: 1,
         cacheGroups: {
