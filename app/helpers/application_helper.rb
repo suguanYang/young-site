@@ -12,7 +12,7 @@ module ApplicationHelper
   def read_path_from_manifest(app_name)
     manifest_file = File.read webpack_manifest_file_path
     manifest = JSON.parse(manifest_file)
-    HelloRails.config.fe_script_assets[app_name].host + HelloRails.config.fe_script_assets.path + manifest[app_name]
+    YoungSite.config.fe_script_assets[app_name].host + YoungSite.config.fe_script_assets.path + manifest[app_name]
   end
 
   def length_utf_8 text

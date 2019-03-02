@@ -1,7 +1,7 @@
 require 'ostruct'
 require 'pry'
 
-module HelloRails
+module YoungSite
   mattr_reader :config
 
   class << self
@@ -31,7 +31,6 @@ module HelloRails
       config_group = origin_config.keys.first
       env_configs = origin_config[config_group][Rails.env]
       config[config_group] = env_configs
-      binding.pry
     end
   end
 end
