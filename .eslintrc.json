@@ -5,7 +5,9 @@
         "es6": true,
         "node": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "plugin:vue/recommended"
+    ],
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -15,10 +17,6 @@
     },
     "plugins": [
         "react"
-    ],
-    excludeFiles": [
-      "./app/assets",
-      "node_modules/"
     ],
     "rules": {
         "indent": [
