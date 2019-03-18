@@ -15,9 +15,11 @@
     "curly": true,
     "class-name": true,
     "semicolon": [
-      true,
+      false,
       "always"
     ],
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
     "triple-equals": true,
     "no-unexternalized-strings": [
       true,
@@ -42,6 +44,7 @@
         ]
       }
     ],
+    "member-access": false,
     "duplicate-imports": true,
     "no-new-buffer": true,
     "translation-remind": true,

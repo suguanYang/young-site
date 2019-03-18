@@ -18,6 +18,11 @@
     "plugins": [
         "react"
     ],
+    "settings": {
+        "import/resolver": {
+            "alias": ["components", "fe/components"]
+        }
+    },
     "rules": {
         "indent": [
             "error",
@@ -33,7 +38,7 @@
         ],
         "semi": [
             "error",
-            "always"
+            "never"
         ]
     }
 }
