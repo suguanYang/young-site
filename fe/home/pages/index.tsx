@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { render  } from 'react-dom'
+import * as React from "react"
+import { render } from "react-dom"
 
 class Index extends React.Component<any, any> {
   constructor(props: any) {
@@ -14,5 +14,5 @@ class Index extends React.Component<any, any> {
 }
 
 render(
-  <Index />,  document.querySelector('#app')
+  <Index />,  document.querySelector("#app"),
 )
