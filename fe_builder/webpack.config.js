@@ -30,6 +30,10 @@ function config() {
           exclude: /node_modules/,
         },
         {
+          test: /\.vue$/,
+          loader: 'vue',
+        },
+        {
           test: /\.(ts|tsx)?$/,
           use: [
             {

@@ -16,7 +16,7 @@
     "plugins": [
         "react"
     ],
-    "excludeFiles": [
+    excludeFiles": [
       "./app/assets",
       "node_modules/"
     ],

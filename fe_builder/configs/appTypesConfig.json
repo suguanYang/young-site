@@ -1,6 +1,6 @@
 {
   "main": {
     "name": "main",
-    "path": "../fe/main/index.tsx"
+    "path": "../fe/pages/home/index.tsx"
   }
 }
