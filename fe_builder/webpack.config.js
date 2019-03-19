@@ -1,20 +1,20 @@
-const path = require("path");
-const ManifestPlugin = require("webpack-manifest-plugin");
-const devServer = require("./configs/devServerConfig");
-const entryConfig = require("./configs/appTypesConfig");
+const path = require("path")
+const ManifestPlugin = require("webpack-manifest-plugin")
+const devServer = require("./configs/devServerConfig")
+const entryConfig = require("./configs/appTypesAndPath")
 
 function getAppTypes()  {
-  const appTypesOption = process.argv.filter(arg => arg.includes("--appTypes=")) || ["--appTypes=main"];
-  return appTypesOption[0].split("=")[1].split(",");  // get [...<apptypes>]
+  const appTypesOption = process.argv.filter(arg => arg.includes("--appTypes=")) || ["--appTypes=home"]
+  return appTypesOption[0].split("=")[1].split(",")  // get [...<apptypes>]
 }
 
 function config() {
-  const appTypes = getAppTypes();
-  const entries = appTypes.map(apptype => path.resolve(__dirname, entryConfig[apptype].path));
+  const appTypes = getAppTypes()
+  const entries = appTypes.map(apptype => path.resolve(__dirname, entryConfig[apptype].path))
   return {
     entry: entries,
     output: {
-      path: path.resolve(__dirname, "../public/dist/"),
+      path: path.resolve(__dirname, "../public/webpack/"),
       filename: "[name].[contenthash].js",
     },
     module: {
@@ -28,10 +28,6 @@ function config() {
             },
           },
           exclude: /node_modules/,
-        },
-        {
-          test: /\.vue$/,
-          loader: 'vue',
         },
         {
           test: /\.(ts|tsx)?$/,
@@ -80,6 +76,10 @@ function config() {
       ],
     },
     resolve: {
+      alias: {
+        pages: path.resolve(__dirname, "../fe/pages/"),
+        components: path.resolve(__dirname, "../fe/components/")
+      },
       extensions: [
         ".js",
         ".jsx",
@@ -91,7 +91,7 @@ function config() {
       new ManifestPlugin({
         fileName: path.resolve(__dirname, `../public/manifest-${appTypes}.json`),
         writeToFileEmit: true,
-      }),
+      })
     ],
     optimization: {
       splitChunks: {
@@ -106,7 +106,7 @@ function config() {
       },
     },
     devServer,
-  };
+  }
 }
 
-module.exports = config;
+module.exports = config

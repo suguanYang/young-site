@@ -1,13 +1,14 @@
-const config = require("./assets");
-const path = require('path');
-const fs = require('fs');
+const config = require("./scriptsAddress")
+const path = require("path")
+const fs = require("fs")
 
+const envConfig = config[process.env.NODE_ENV]
 module.exports = {
-  contentBase: config.output_dir,
-  port: config.port,
+  // contentBase: envConfig.path,
+  port: envConfig.port,
   compress: true,
   https: {
-    key: fs.readFileSync(path.join(__dirname, '../../ssl/localhostkey.pem')),
-    cert: fs.readFileSync(path.join(__dirname, '../../ssl/localhostcert.pem'))
+    key: fs.readFileSync(path.join(__dirname, "../../ssl/localhostkey.pem")),
+    cert: fs.readFileSync(path.join(__dirname, "../../ssl/localhostcert.pem"))
   },
-};
+}

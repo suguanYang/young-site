@@ -1,0 +1,6 @@
+{
+  "home": {
+    "name": "home",
+    "path": "../fe/home/pages/index.tsx"
+  }
+}

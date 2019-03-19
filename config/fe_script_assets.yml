@@ -1,5 +1,0 @@
-fe_script_assets:
-  development:
-    main:
-      host: "https://localhost:1234"
-      path: "/"

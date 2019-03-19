@@ -1,9 +1,9 @@
-const inquirer = require("inquirer");
-const { spawn } = require("child_process");
+const inquirer = require("inquirer")
+const { spawn } = require("child_process")
 
-const APP_TYPES = require("./fe_builder/configs/appTypesConfig");
+const APP_TYPES = require("./fe_builder/configs/appTypesAndPath")
 
-const APP_TYPES_ARRAY = Object.values(APP_TYPES).map(app => app);
+const APP_TYPES_ARRAY = Object.values(APP_TYPES).map(app => app)
 
 const questions = [
   {
@@ -19,31 +19,31 @@ const questions = [
     choices: APP_TYPES_ARRAY,
     validate(answer) {
       if (answer.length < 1) {
-        return "You must choose at least one project";
+        return "You must choose at least one project"
       }
-      return true;
+      return true
     },
   },
-];
+]
 
 function commandCreator(appTypes, env) {
-  const apps = `--appTypes=${appTypes} `;
-  const mode = `NODE_ENV=${env} `;
+  const apps = `--appTypes=${appTypes} `
+  const mode = `NODE_ENV=${env} `
   const compiling = env === "development"
     ? "yarn build-dev "
-    : "yarn build-pro ";
+    : "yarn build-pro "
 
-  return  mode + compiling + apps;
+  return  mode + compiling + apps
 }
 
 inquirer
   .prompt(questions)
   .then(answers => {
-    const appTypes = answers.types.reduce((curr, prev) => `${curr},${prev}`);
-    const cmd = commandCreator(appTypes, answers.development ? "development" : "production");
+    const appTypes = answers.types.reduce((curr, prev) => `${curr},${prev}`)
+    const cmd = commandCreator(appTypes, answers.development ? "development" : "production")
     spawn(cmd, {
       shell: true,
       stdio: "inherit",
-    });
-  });
+    })
+  })
 
