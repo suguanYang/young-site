@@ -1,6 +1,8 @@
 require 'pry'
 
 class HomeController < ApplicationController
+  layout false
+
   def multi_params(*args)
   end
 

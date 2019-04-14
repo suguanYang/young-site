@@ -1,4 +1,9 @@
-#app
-= sanitize(include_webpack_tag('home'), {tags: ['script']}) 
-
-
+<!DOCTYPE html>
+%html
+  %head
+    %title young_site
+    %link(rel="stylesheet" href="/stylesheets/reset.css")
+    %link(rel="stylesheet" href="/stylesheets/app.css")
+  %body
+    #app
+    = sanitize(include_webpack_tag('home'), {tags: ['script']}) 
