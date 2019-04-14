@@ -9,8 +9,9 @@ const size = (w: string, h: string) => `
   height: ${h};
 `
 
-const pixeledFont = `
-  font-family: 'Pixeled-1';
+const shadowBorder = `
+  border-top: 2px solid #98791f;
+  border-bottom: 2px solid #98791f;
 `
 
 const fontCentered = (lineHeight: number) => `
@@ -29,7 +30,6 @@ export const StyledHeader = styled.div`
   > .title {
     font-size: 18px;
     color: #bfb754;
-    ${pixeledFont};
   }
 `
 
@@ -37,8 +37,7 @@ export const StyledHeadLine = styled.div`
   ${size("100%", "4px")};
   margin: 8px 0 12px;
   background-color: #b3ae53;
-  border-top: 2px solid #98791f;
-  border-bottom: 2px solid #98791f;
+  ${shadowBorder};
 `
 
 export const StyledNavigation = styled.div`
@@ -50,15 +49,29 @@ export const StyledNavigation = styled.div`
     box-sizing: border-box;
     ${size("25%", "100%")};
     font-size: 18px;
+    font-weight: 600;
     text-indent: 16px;
     text-decoration: none;
     line-height: 40px;
     color: #d6f78c;
     border-right: 8px solid #d6f78c;
+    ${shadowBorder};
   }
 
   > .active {
-    color: #dabe6b;
+    color: #bfb754;
     background-color: #d6f78c;
+  }
+`
+
+export const FooterLine = styled.div`
+  display: flex;
+  margin-top: 30px;
+  ${size("100%", "4px")};
+  justify-content: space-between;
+
+  > .footerline-item {
+    ${size("1.3%", "4px")};
+    background-color: #d6db8b;
   }
 `

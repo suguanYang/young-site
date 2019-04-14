@@ -50,6 +50,7 @@
     "translation-remind": true,
     "only-arrow-functions": false,
     "arrow-parens": false,
+    "interface-name": false,
     "no-standalone-editor": true
   },
   "rulesDirectory": []

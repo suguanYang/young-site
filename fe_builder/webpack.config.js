@@ -12,7 +12,7 @@ function config() {
   const appTypes = getAppTypes()
   const entries = appTypes.map(apptype => path.resolve(__dirname, entryConfig[apptype].path))
   return {
-    devtool: null,
+    devtool: false,
     entry: entries,
     output: {
       path: path.resolve(__dirname, "../public/webpack/"),
